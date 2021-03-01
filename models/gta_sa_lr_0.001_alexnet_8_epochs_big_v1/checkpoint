@@ -1,0 +1,2 @@
+model_checkpoint_path: "D:\\CE\\Python\\DL\\practises\\gta_sa_autonomous_driving\\models\\gta_sa_lr_0.001_alexnet_v2_8_epochs_big_v1\\gta_sa_lr_0.001_alexnet_v2_8_epochs_big_v1.model"
+all_model_checkpoint_paths: "D:\\CE\\Python\\DL\\practises\\gta_sa_autonomous_driving\\models\\gta_sa_lr_0.001_alexnet_v2_8_epochs_big_v1\\gta_sa_lr_0.001_alexnet_v2_8_epochs_big_v1.model"
