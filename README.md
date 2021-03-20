@@ -37,5 +37,5 @@ Run run_model.py
 ### Length of this Gif is 25 seconds.
 ![demo 1](https://github.com/yigitatesh/gta_san_andreas_autonomous_driving/blob/main/demos/autonomous_demo_1.gif?raw=true)
 
-## Demo showing the autonomous car dodging another car
+## Demo showing the autonomous car dodging another car turning into front of it!
 ![dodging example](https://github.com/yigitatesh/gta_san_andreas_autonomous_driving/blob/main/demos/autonomous_near_miss.gif?raw=true)
