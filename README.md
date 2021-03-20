@@ -31,3 +31,7 @@ The program takes a screenshot of the game window and predicts the best move for
 Run simple_car.py
 ## CNN model
 Run run_model.py
+
+# Results
+## Demo showing the autonomous car dodging another car
+![dodging example](https://github.com/yigitatesh/gta_san_andreas_autonomous_driving/blob/main/demos/autonomous_near_miss.gif?raw=true)
