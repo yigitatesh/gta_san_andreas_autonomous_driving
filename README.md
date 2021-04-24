@@ -29,8 +29,10 @@ The program takes a screenshot of the game window and predicts the best move for
 # How to Run
 ## Simple car model
 Run simple_car.py
+Open game in fullscreen mode.
 ## CNN model
 Run run_model.py
+Open game in fullscreen mode.
 
 # Results
 ## Demo showing the autonomous car driving on a highway and dodging other cars
