@@ -1,5 +1,11 @@
 #!/usr/bin/env python
 # coding: utf-8
+
+print("Loading Packages...")
+import os
+# Do not show unnecessary warning messages
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
+
 import numpy as np
 import cv2
 from mss import mss
@@ -16,7 +22,7 @@ try:
     user32 = ctypes.windll.user32
     width, height = user32.GetSystemMetrics(0), user32.GetSystemMetrics(1)
 except:
-    screensize = input("Enter width and height of screen(separated by space): ")
+    screensize = input("\nEnter width and height of screen(separated by space): ")
     (width, height) = tuple(map(int, screensize.split()))
 
 # width, height = 800, 600
@@ -43,6 +49,7 @@ MODEL_NAME = MODEL_PREFIX + ".model"
 MODEL_PATH = "models" + "/" + MODEL_PREFIX + "/" + MODEL_NAME
 
 ## LOAD ALEXNET MODEL
+print("Loading the Model...")
 model = alexnet(WIDTH, HEIGHT, LR)
 model.load(MODEL_PATH)
 
@@ -153,7 +160,7 @@ def pred_to_move_with_slow_down(prediction, slow_down_prob=0.1):
 ## MAIN FUNCTION
 
 def main():
-    bbox = {"top": 0, "left": width//10, "width": width*9//10, "height": height}
+    bbox = {"top": 0, "left": 0, "width": width, "height": height}
 
     sct = mss()
     
@@ -170,10 +177,19 @@ def main():
             # image to grayscale
             screen = cv2.cvtColor(screen, cv2.COLOR_BGR2GRAY)
 
+            ## crop black borders of the game screen
+            # thresh black parts
+            _,thresh = cv2.threshold(screen, 1, 255, cv2.THRESH_BINARY)
+            # find contours
+            contours, _ = cv2.findContours(thresh, cv2.RETR_EXTERNAL,cv2.CHAIN_APPROX_SIMPLE)
+            if contours:
+                cnt = contours[0]
+                x, y, w, h = cv2.boundingRect(cnt)
+                # crop non-black part of the image
+                screen = screen[y:y+h, x:x+w]
+
             # resize image
             screen = cv2.resize(screen, (80, 60))
-
-            #cv2.imshow("resized", screen)
 
             ## uncomment below line to see your FPS
             #print("Frame took {} seconds".format(time.time()-last_time))
