@@ -28,10 +28,10 @@ The program takes a screenshot of the game window and predicts the best move for
 
 # How to Run
 ## Simple car model
-Run simple_car.py
+Run simple_car.py. <br>
 Open game in fullscreen mode.
 ## CNN model
-Run run_model.py
+Run run_model.py. <br>
 Open game in fullscreen mode.
 
 # Results
