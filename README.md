@@ -55,14 +55,11 @@ Open "GTA San Andreas" video game in fullscreen mode.
 # Results
 ## The autonomous car driving on a highway and dodging other cars
 <!-- ![demo 1](https://github.com/yigitatesh/gta_san_andreas_autonomous_driving/blob/main/demos/autonomous_demo_1.gif?raw=true) -->
-
-https://user-images.githubusercontent.com/71609304/137596783-706128fa-574e-4514-8048-977f2ab19fe0.mp4
-
+https://user-images.githubusercontent.com/71609304/137597089-b2a2b9e6-0ea6-4006-99d8-dae26e2e31a7.mp4
 
 ## The autonomous car dodging another car that is turning into the front of it!
 <!-- ![dodging example](https://github.com/yigitatesh/gta_san_andreas_autonomous_driving/blob/main/demos/autonomous_near_miss.gif?raw=true) -->
-
-
+https://user-images.githubusercontent.com/71609304/137596783-706128fa-574e-4514-8048-977f2ab19fe0.mp4
 
 
 # Future Improvements
