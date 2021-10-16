@@ -57,6 +57,10 @@ Open "GTA San Andreas" video game in fullscreen mode.
 This Gif is 25 seconds. <br><br>
 ![demo 1](https://github.com/yigitatesh/gta_san_andreas_autonomous_driving/blob/main/demos/autonomous_demo_1.gif?raw=true)
 
+
+<!-- https://user-images.githubusercontent.com/71609304/137596078-c9c47732-3e58-49b4-a403-528246494946.mp4 -->
+
+
 ## The autonomous car dodging another car that is turning into the front of it!
 ![dodging example](https://github.com/yigitatesh/gta_san_andreas_autonomous_driving/blob/main/demos/autonomous_near_miss.gif?raw=true)
 
