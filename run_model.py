@@ -10,12 +10,14 @@ import numpy as np
 import cv2
 from mss import mss
 import time
-from nn_architectures.alexnet import alexnet
 
 from utils.directkeys import PressKey, ReleaseKey, W, A, S, D
 from utils.getkeys import get_pressed
 
 import ctypes
+
+import tensorflow as tf
+from tensorflow.keras import models
 
 ## GET SCREEN WIDTH AND HEIGHT
 try:
@@ -36,22 +38,18 @@ config.gpu_options.allow_growth = True
 session = InteractiveSession(config=config)
 
 ## PREPARE MODEL'S INFO
-WIDTH = 80
-HEIGHT = 60
-LR = 1e-3
-EPOCHS = 8
+SIZE = 60
+EPOCHS = 10
 
-# Model name
-# big model v1
-MODEL_PREFIX = "gta_sa_lr_{}_{}_{}_epochs_big_v1".format(LR, "alexnet", EPOCHS)
-
-MODEL_NAME = MODEL_PREFIX + ".model"
+## Model name
+# big model v2
+MODEL_PREFIX = "gta_sa_{}_epochs_big_v2".format(EPOCHS)
+MODEL_NAME = MODEL_PREFIX + ".h5"
 MODEL_PATH = "models" + "/" + MODEL_PREFIX + "/" + MODEL_NAME
 
 ## LOAD ALEXNET MODEL
 print("Loading the Model...")
-model = alexnet(WIDTH, HEIGHT, LR)
-model.load(MODEL_PATH)
+model = models.load_model(MODEL_PATH)
 
 ## DIRECTION FUNCTIONS
 # movements for 9 choices
@@ -189,19 +187,22 @@ def main():
                 screen = screen[y:y+h, x:x+w]
 
             # resize image
-            screen = cv2.resize(screen, (80, 60))
+            screen = cv2.resize(screen, (SIZE, SIZE))
+
+             # normalize image
+            screen = (screen - screen.min()) / max((screen.max() - screen.min()), 0.001)
 
             ## uncomment below line to see your FPS
             #print("Frame took {} seconds".format(time.time()-last_time))
             last_time = time.time()
 
             # prediction
-            prediction = model.predict(screen.reshape(1, WIDTH, HEIGHT, 1))[0]
+            prediction = model.predict(screen.reshape(1, SIZE, SIZE, 1))[0]
             confidence = prediction.max()
 
             # interpret prediction to move
             #pred_to_move(prediction)
-            pred_to_move_with_slow_down(prediction, 0.2)
+            pred_to_move_with_slow_down(prediction, 0.4)
             
         # keys
         keys = get_pressed()
